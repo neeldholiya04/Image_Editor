@@ -52,6 +52,7 @@ The program is organized into a single Java class named `index`. It contains bot
      - `inputImage` (BufferedImage): The input image to be flipped.
    - Returns:
      - A vertically flipped `BufferedImage`.
+     
 7. **blurImage(BufferedImage inputImage, int blurFactor)**
    - This method applies a blur effect to the input image by averaging the colour values of nearby pixels. The degree of blurring is determined by the ‘blurFactor’, which specifies the radius around each pixel to consider when calculating the average colour.
    - Parameters:
