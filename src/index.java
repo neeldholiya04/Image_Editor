@@ -118,6 +118,39 @@ public class index {
     }
     //--------------------Flip Vertical Ends---------------------
 
+    //--------------------BLUR IMAGE---------------------
+    static BufferedImage blurImage(BufferedImage inputImage, int blurFactor){
+        int height = inputImage.getHeight();
+        int width = inputImage.getWidth();
+        BufferedImage outputImage = new BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR);
+        for(int i=0;i<height;i++){
+            for(int j=0;j<width;j++){
+                int red = 0;
+                int green = 0;
+                int blue = 0;
+                int count = 0;
+                for(int k=-blurFactor;k<=blurFactor;k++){
+                    for(int l=-blurFactor;l<=blurFactor;l++){
+                        if(i+k>=0 && i+k<height && j+l>=0 && j+l<width){
+                            Color pixel = new Color(inputImage.getRGB(j+l, i+k));
+                            red += pixel.getRed();
+                            green += pixel.getGreen();
+                            blue += pixel.getBlue();
+                            count++;
+                        }
+                    }
+                }
+                red /= count;
+                green /= count;
+                blue /= count;
+                Color newPixel = new Color(red, green, blue);
+                outputImage.setRGB(j, i, newPixel.getRGB());
+            }
+        }
+        return outputImage;
+    }
+    //--------------------BLUR IMAGE ENDS---------------------
+
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
         File inputFile = new File("43911.jpg");
@@ -128,6 +161,7 @@ public class index {
         System.out.println("TO ROTATE YOUR IMAGE ANTICLOCKWISE, ENTER 4");
         System.out.println("TO FLIP YOUR IMAGE HORIZONTALLY, ENTER 5");
         System.out.println("TO FLIP YOUR IMAGE VERTICALLY, ENTER 6");
+        System.out.println("TO BLUR YOUR IMAGE, ENTER 7");
 
         System.out.print("Enter the Option: ");
         int option= sc.nextInt();
@@ -167,6 +201,13 @@ public class index {
                     outputImage = flipVertical(inputImage);
                     break;
                     // -- flip vertical ends --
+                case 7:
+                    // -- blur image --
+                    System.out.print("Enter the blur factor: ");
+                    int blurFactor = sc.nextInt();
+                    outputImage = blurImage(inputImage, blurFactor);
+                    break;
+                    // -- blur image ends --
                 default:
                     System.out.println("Invalid Input!");
                 }

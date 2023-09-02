@@ -52,6 +52,13 @@ The program is organized into a single Java class named `index`. It contains bot
      - `inputImage` (BufferedImage): The input image to be flipped.
    - Returns:
      - A vertically flipped `BufferedImage`.
+7. **blurImage(BufferedImage inputImage, int blurFactor)**
+   - This method applies a blur effect to the input image by averaging the colour values of nearby pixels. The degree of blurring is determined by the ‘blurFactor’, which specifies the radius around each pixel to consider when calculating the average colour.
+   - Parameters:
+      - ‘inputImage’ (BufferedImage): The input image is to be blurred.
+      - ‘blurFactor’ (int): The radius around each pixel to        consider when calculating the average colour. A higher value results in a stronger blur effect.
+   - Returns:
+      - A blurred ‘BufferedImage’ with the same dimension as the input image.
 
 ### Main Method
 
@@ -64,6 +71,7 @@ The program is organized into a single Java class named `index`. It contains bot
    4. Rotate counterclockwise
    5. Flip horizontally
    6. Flip vertically
+   7. Blur Image
 - The modified image is saved as "OutputImage.jpg" in the program's directory.
 
 ## Supported Operations
@@ -88,6 +96,11 @@ The program supports the following image manipulation operations:
 
 6. **Flip Vertically**
    - Flips the input image vertically (top to bottom).
+
+7. **Blur Factor**
+   - Blur the input image by specified blur factor.
+   - Additional Input Required: Blur Factor.
+
 
 ## Usage Instructions
 
@@ -124,6 +137,7 @@ Here are examples of how to use the program for different operations:
 4. To rotate counterclockwise, enter `4`.
 5. To flip horizontally, enter `5`.
 6. To flip vertically, enter `6`.
+7. To blur the image, enter '7', and provide blur factor.
 
 ## Notes
 
